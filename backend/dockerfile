@@ -1,0 +1,14 @@
+FROM node:8.10
+RUN mkdir /code
+WORKDIR /code
+COPY package.json .
+COPY ecosystem.config.js .
+RUN npm install -g pm2
+RUN npm install -g nodemon
+# Show current folder structure in logs
+# RUN ls -al -R
+RUN npm install
+COPY . .
+ENV NPM_CONFIG_LOGLEVEL warn
+
+

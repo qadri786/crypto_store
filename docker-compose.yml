@@ -1,0 +1,56 @@
+version: '3'
+services:
+  mongo-dev:
+    image: mongo
+    volumes:
+      - /opt/data:/data/db
+    ports:
+      - 27017:27017
+
+  api:
+    image: node:8.10
+    container_name: api
+    working_dir: "/code"
+    volumes:
+      - ./backend:/code
+    command: "npx pm2 start ecosystem.config.js --no-daemon"
+    ports:
+      - 3000
+    labels:
+      - traefik.frontend.rule=PathPrefix:/api/
+      - traefik.backend=api
+      - traefik.port=3000
+      - traefik.enable=true
+
+    depends_on:
+      - mongo-dev
+
+  web:
+    image: node:8.10
+    container_name: crypto_app
+    working_dir: "/code"
+    volumes:
+      - ./ui:/code
+    command: "npx pm2 start ecosystem.config.js --no-daemon"
+    ports:
+      - 3000
+    labels:
+      - traefik.frontend.rule=PathPrefix:/
+      - traefik.backend=ui
+      - traefik.port=3000
+      - traefik.enable=true
+    depends_on:
+      - api
+
+  server:
+    image: traefik
+    volumes:
+      - ./traefik/traefik.toml:/etc/traefik/traefik.toml
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    depends_on: 
+      - api
+      - web
