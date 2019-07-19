@@ -209,6 +209,7 @@ exports.productModify = (req, res) => {
             description: req.body.description,
             company: req.body.company_id,
             user_id: req.headers.user_id,
+            single_order: req.body.single_order,
             activeyn: req.body.status,
         },{"_id": req.params.id}, (err, doc)=>{
             if(err) res.status(500).json({"error": err.message});

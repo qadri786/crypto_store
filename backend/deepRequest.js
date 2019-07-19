@@ -17,6 +17,7 @@ exports.withSKU = (product, req, res) => {
                 description: req.body.description,
                 company: req.body.company_id,
                 user_id: req.headers.user_id,
+                single_order: req.body.single_order,
                 activeyn: req.body.status,
             },(err, doc) => {
                 if(err) {
@@ -42,6 +43,7 @@ exports.withoutSKU = (product, req, res) => {
         description: req.body.description,
         company: req.body.company_id,
         user_id: req.headers.user_id,
+        single_order: req.body.single_order,
         activeyn: req.body.status,
     },(err, doc) => {
         if(err) {

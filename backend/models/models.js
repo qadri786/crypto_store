@@ -53,6 +53,7 @@ module.exports = {
         branch: {type: mongoose.ObjectId, required: false},
         user_id: {type: String, required: true},
         visibility: [{type: String, enum: ['catelog', 'search'], required: true, default: ['catelog', 'search']}],
+        single_order: {type: Boolean, required: true, default: false},
         activeyn: {type: Boolean, required: true, default: true},
         keywords: {type: String}
     }),

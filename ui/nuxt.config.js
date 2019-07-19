@@ -8,7 +8,7 @@ module.exports = {
    */
 
   env: {
-    BASE_URL: "http://thesmartstore.pk",
+    BASE_URL: "http://localhost",
     FIREBASE: {
       apiKey: "AIzaSyCtlpohgGvO3ArWvWpcjyD0utiNDs5yZQo",
       authDomain: "thesmartstore-29c86.firebaseapp.com",

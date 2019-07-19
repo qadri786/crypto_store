@@ -4,6 +4,7 @@
             <v-btn color="primary" flat title="go back" :nuxt="true" :to="'/dashboard/product'" value="right"><v-icon>arrow_back</v-icon> Go back</v-btn>
             <v-layout row wrap>
                 <v-checkbox v-model="status" label="Enable"></v-checkbox>
+                <v-checkbox v-model="single_order" label="Single Order"></v-checkbox>
             </v-layout>
             <v-layout row wrap>
                 <v-select v-model="category_id" :items="categories" item-text="name" item-value="_id" label="Category"></v-select>
@@ -117,6 +118,7 @@ export default {
                 short_description: this.short_description,
                 description: this.description,
                 company_id: this.company_id,
+                single_order: this.single_order,
                 status: this.status
                 }, {"Content-Type": "application/json", headers:{"Authorization": "key=" + this.$store.state.user.currentUser}},(resp) => {
                 if(this.images !== ""){
@@ -155,7 +157,7 @@ export default {
                 sku: "",
                 price: 0, stock: 0, status: true,
                 visibility: ['catelog', 'search'], short_description: "",
-                description: "", specs: [], images: "", 
+                description: "", specs: [], images: "", single_order: false,
                 company_id: resp.data._id,
                 categories: []
             }

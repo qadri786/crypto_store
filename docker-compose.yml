@@ -9,7 +9,7 @@ services:
 
   api:
     image: node:8.10
-    container_name: api
+    container_name: crypto_api
     working_dir: "/code"
     volumes:
       - ./backend:/code

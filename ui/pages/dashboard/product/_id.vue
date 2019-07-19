@@ -4,6 +4,7 @@
             <v-btn color="primary" flat title="go back" :nuxt="true" :to="'/dashboard/product'" value="right"><v-icon>arrow_back</v-icon> Go back</v-btn>
             <v-layout row wrap>
                 <v-checkbox v-model="status" label="Enable"></v-checkbox>
+                <v-checkbox v-model="single_order" label="Single Order"></v-checkbox>
             </v-layout>
             <v-layout row wrap>
                 <v-select v-model="category_id" :items="categories" item-text="name" item-value="_id" label="Category"></v-select>
@@ -161,6 +162,7 @@ export default {
                     price: respG.data.price, 
                     stock: respG.data.stock, 
                     status: respG.data.activeyn,
+                    single_order: respG.data.single_order,
                     visibility: respG.data.visibility,
                     short_description: respG.data.short_description,
                     description: respG.data.description, 
