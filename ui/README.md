@@ -1,4 +1,4 @@
-# tss_ui
+# web_ui
 
 > eStore which will support cryptocurrencies
 
