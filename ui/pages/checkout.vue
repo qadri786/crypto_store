@@ -52,7 +52,7 @@ export default {
     },
 
     asyncData({store, redirect}){
-        return axios.get("http://localhost/api/customer", {headers:{"Authorization": "key="+store.state.user.currentUser}})
+        return axios.get("http://" + (process.server ? "api:3000" : "localhost") + "/api/customer", {headers:{"Authorization": "key="+store.state.user.currentUser}})
         .then((resp) => {
             if (resp.data.id === "register"){
                 redirect("/user/register")

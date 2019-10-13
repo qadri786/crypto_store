@@ -34,7 +34,7 @@ export default {
     },
 
     asyncData({store,params, error}){
-        return axios.get("http://localhost/api/product/" + params.id).then((resp) => {
+        return axios.get("http://" + (process.server ? "api:3000" : "localhost") + "/api/product/" + params.id).then((resp) => {
             return {
                 item: resp.data,
                 user: store.state.user.currentUser,

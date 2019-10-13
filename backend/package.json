@@ -21,7 +21,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.5.11",
     "multer": "^1.4.1",
-    "multer-sharp": "^0.6.1",
     "mustache": "^3.0.1",
     "nodemailer": "^6.2.1",
     "pm2": "^3.5.1"

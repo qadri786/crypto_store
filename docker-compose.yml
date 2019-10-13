@@ -8,7 +8,7 @@ services:
       - 27017:27017
 
   api:
-    image: node:8.10
+    build: ./backend/
     container_name: crypto_api
     working_dir: "/code"
     volumes:
@@ -26,7 +26,7 @@ services:
       - mongo-dev
 
   web:
-    image: node:8.10
+    build: ./ui/
     container_name: crypto_app
     working_dir: "/code"
     volumes:

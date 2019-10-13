@@ -148,7 +148,7 @@ export default {
         }).catch(err => console.log(err))
     },
     asyncData({store, error, redirect}){
-        return axios.get("http://localhost/api/user/company", { headers: {"Authorization": "key=" + store.state.user.currentUser} })
+        return axios.get("http://" + (process.server ? "api:3000" : "localhost") + "/api/user/company", { headers: {"Authorization": "key=" + store.state.user.currentUser} })
         .then((resp) => {
             return {
                 id: "", 

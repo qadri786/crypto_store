@@ -1,5 +1,5 @@
 const multer = require("multer");
-const gcsStorage = require("multer-sharp");
+// const gcsStorage = require("multer-gcs");
 const fs = require("fs");
 const path = require("path");
 const Mustache = require("mustache");
@@ -35,18 +35,18 @@ const storage = multer.diskStorage({
 });
 
 
-const gcs = gcsStorage({
-    bucket: 'thesmartstore-29c86.appspot.com', // Required : bucket name to upload
-    projectId: 'thesmartstore-29c86', // Required : Google project ID
-    keyFilename: '/code/thesmartstore-29c86-firebase-adminsdk-g1e7d-9cb0b3f6a1.json', // Optional : JSON credentials file for Google Cloud Storage
-    destination: (req, file, cb) => {
-        cb(null, "uploads/images/" + req.headers.user_id + "/" + req.params.id)
-    }, // Optional : destination folder to store your file on Google Cloud Storage, default: ''
-    acl: 'publicRead' // Optional : acl credentials file for Google Cloud Storage, 'publicrRead' or 'private', default: 'private'
-});
+// const gcs = gcsStorage({
+//     bucket: 'thesmartstore-29c86.appspot.com', // Required : bucket name to upload
+//     projectId: 'thesmartstore-29c86', // Required : Google project ID
+//     keyFilename: '/code/thesmartstore-29c86-firebase-adminsdk-g1e7d-9cb0b3f6a1.json', // Optional : JSON credentials file for Google Cloud Storage
+//     destination: (req, file, cb) => {
+//         cb(null, "uploads/images/" + req.headers.user_id + "/" + req.params.id)
+//     }, // Optional : destination folder to store your file on Google Cloud Storage, default: ''
+//     acl: 'publicRead' // Optional : acl credentials file for Google Cloud Storage, 'publicrRead' or 'private', default: 'private'
+// });
 
 exports.upload = multer({
-    storage: gcs, 
+    storage: storage, 
     fileFilter: (req, file, cb)=>{
         if(file.mimetype.startsWith("image")){
             cb(null, true);

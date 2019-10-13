@@ -33,7 +33,7 @@ export default {
         }
     },
     asyncData({store, error}){
-        return axios.get("http://localhost/api/customer", {headers:{"Authorization": "key="+store.state.user.currentUser}})
+        return axios.get("http://" + (process.server ? "api:3000" : "localhost") + "/api/customer", {headers:{"Authorization": "key="+store.state.user.currentUser}})
         .then((resp) => {
             return {
                 name: resp.data.name,
