@@ -19,14 +19,16 @@ module.exports = (req, res, next) => {
             next()    
         }
     }else{
-        next()
-        // Should change to regex !
-        // let exempt = appConfig.auth.exempt.filter((item) => { return item == req.path });
-        // if(exempt.length > 0){
-        //     next();
-        // }else{
-        //     res.sendError({ error: "authentication value mismatched" });
-        //     // res.status("401").json({ message: "authentication value mismatched" });
-        // }
+        const pattDashboard = new RegExp("dashboard");
+        const pattMedia = new RegExp("media");
+        if(pattDashboard.exec(req.path) || pattMedia.exec(req.path)){
+            if(req.path.indexOf("login") > -1 || req.path.indexOf("api-docs") > -1){
+                next()    
+            }else{
+                res.sendError(null, "Un-Authorized user !", 401);
+            }
+        }else{
+            next()
+        }
     }
 }

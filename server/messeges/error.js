@@ -6,5 +6,7 @@ module.exports = {
     pinNotMatched: {message: "Outlet pin not matched"},
     offerAlreadyRedeem: {message: "Offer already redeemed"},
     offerExpired: {message: "Offer has been expired"},
-    yetNotImpl: {message: "Yet not implement"}  
+    yetNotImpl: {message: "Yet not implement"},  
+    serverError: {message: "Server error"},
+    noAssetsUpload: {message: "No assets upload"}
 };

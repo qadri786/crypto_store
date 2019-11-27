@@ -3,5 +3,6 @@ module.exports = {
     edit: "updated successfully",
     remove: "deleted successfully",
     active: "activated successfully",
-    deactive: "deactivated successfully"
+    deactive: "deactivated successfully",
+    upload: "uploaded"
 };

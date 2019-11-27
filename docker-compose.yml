@@ -12,18 +12,18 @@ services:
       - 5432:5432
 
   api:
-    build: ./backend/
+    build: .
     container_name: crypto_api
     working_dir: "/code"
     volumes:
-      - ./backend:/code
+      - .:/code
     command: "npx pm2 start ecosystem.config.js --no-daemon"
     ports:
-      - 3000
+      - 4000
     labels:
-      - traefik.frontend.rule=PathPrefix:/api/
+      - traefik.frontend.rule=PathPrefix:/
       - traefik.backend=api
-      - traefik.port=3000
+      - traefik.port=4000
       - traefik.enable=true
 
     depends_on:

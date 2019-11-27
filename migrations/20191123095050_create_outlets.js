@@ -10,14 +10,16 @@ exports.up = function(knex) {
     table.string("phone")
     table.string("email")
     table.jsonb("social")
+    table.text("address")
+    table.integer("rate").defaultTo(0)
     table.boolean("is_active").defaultTo(true)
     table.timestamps(true, true)
     table.timestamp("deleted_at")
   }).createTable("user_outlets", function(table){
     table.integer("user_id").references("users.id")
     table.integer("outlet_id").references("outlets.id")
-  }).createTable("outlet_products", function(){
-    table.integer("user_id").references("users.id")
+  }).createTable("outlet_products", function(table){
+    table.integer("outlet_id").references("outlets.id")
     table.integer("product_id").references("products.id")
   })
 };

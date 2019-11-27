@@ -8,6 +8,7 @@ const config = {
         middlewares: [
             {"url": "./middlewares/response", "pos": "before"},
             {"url": "./middlewares/authentication", "pos": "before"},
+            {"url": "./middlewares/error", "pos": "after"},
         ],
         pagination: {
             limit: 20
