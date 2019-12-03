@@ -22,7 +22,6 @@ exports.excludeOthers = (obj, keys=[]) => {
     }
 }
 
-
 exports.removeFromObject = (obj, keys=[]) => {
     if(Array.isArray(obj)){
         return Object.assign({}, obj).map((item) => {
@@ -45,3 +44,20 @@ exports.removeFromObject = (obj, keys=[]) => {
     }
 }
 
+exports.makeStringify = (obj, keys=[]) => {
+    keys.forEach((key) => {
+        if(obj.hasOwnProperty(key)){
+            obj[key] = JSON.stringify(obj[key])
+        }
+    })
+    return obj
+}
+
+exports.transformFields = (obj, fields = {}) => {
+    Object.keys(fields).forEach((key) => {
+        if(obj.hasOwnProperty(key)){
+            obj[key] = obj[fields[key]]
+        }
+    })
+    return obj
+}

@@ -4,5 +4,5 @@ module.exports = {
     remove: "deleted successfully",
     active: "activated successfully",
     deactive: "deactivated successfully",
-    upload: "uploaded"
+    assets: "uploaded"
 };

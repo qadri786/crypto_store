@@ -1,3 +1,4 @@
+const storage = require("./storage")
 const config = {
     "development": {
         auth: {
@@ -12,7 +13,8 @@ const config = {
         ],
         pagination: {
             limit: 20
-        }
+        },
+        storage
     },
     "test": {
         auth: {
@@ -26,7 +28,8 @@ const config = {
         ],
         pagination: {
             limit: 20
-        }
+        },
+        storage
     },
     "production": {
         auth: {
@@ -41,7 +44,8 @@ const config = {
         ],
         pagination: {
             limit: 20
-        }
+        },
+        storage
     }
 };
 module.exports = config[process.env.NODE_ENV];

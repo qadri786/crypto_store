@@ -1,8 +1,7 @@
 const dbConfig = require("../config/database");
 const logCat = require("../library/logger")("sql");
 const knex = require('knex')
-const setupPaginator = require('knex-paginator');
-setupPaginator(knex);
+
 module.exports = knex({
     debug: process.env.NODE_ENV == "production" ? false : true,
     client: dbConfig[process.env.NODE_ENV].dialect,

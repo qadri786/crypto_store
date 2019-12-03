@@ -1,1 +1,1 @@
-module.exports =  n => require("debug")(`tss:${n}`)
+module.exports =  n => require("debug")(`mbq:${n}`)
