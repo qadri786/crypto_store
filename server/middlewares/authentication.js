@@ -25,8 +25,8 @@ module.exports = (req, res, next) => {
             if(req.path.indexOf("login") > -1 || req.path.indexOf("api-docs") > -1){
                 next()    
             }else{
-                next()
-                // res.sendError(null, "Un-Authorized user !", 401);
+                // next()
+                res.sendError(null, "Un-Authorized user !", 401);
             }
         }else{
             next()

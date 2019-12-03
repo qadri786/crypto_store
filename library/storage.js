@@ -5,8 +5,8 @@ const sha256Hash = require("js-sha256");
 const { storage } = require("../config/app");
 
 const s3 = new AWS.S3({
-    accessKeyId: aws.access_key,
-    secretAccessKey: aws.secret_key
+    accessKeyId: "",
+    secretAccessKey: ""
 });
 
 const fileFilter = (req, file, cb) => {
@@ -30,19 +30,21 @@ const disks = {
             }
         })
     },
-    local: multer.diskStorage({
-        destination: function (req, file, cb) {
-          cb(null, '/uploads')
-        },
-        filename: function (req, file, cb) {
-          cb(null, `${options.folder}/${sha256Hash.sha256(`${file.originalname}-${Date.now()}`)}`)
-        }
-    })
+    local: (options = {folder: "media"}) => {
+        return multer.diskStorage({
+            destination: function (req, file, cb) {
+              cb(null, `${__dirname}/../server/uploads/${options.folder}/`)
+            },
+            filename: function (req, file, cb) {
+              cb(null, `${sha256Hash.sha256(`${file.originalname}-${Date.now()}`)}`)
+            }
+        })
+    }
 }
 
 exports.upload = (options) => {
     return multer({
-        storage: disks[storage.disks],
+        storage: disks[storage.disk](options),
         fileFilter: fileFilter
     })
 }

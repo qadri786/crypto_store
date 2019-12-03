@@ -53,13 +53,17 @@ exports.deleteCategory = async (req, res, next) => {
 
 
 exports.uploadAssets = async (req, res, next) => {
+    console.log("Start saving")
     try{
         if(req.files){
             if(req.files.image){
-               req.body.image = req.files["image"][0].location
+               req.body.image = `/category/${req.files["image"][0].filename}`
             }
            if(Object.keys(req.body).length > 0){
-               const updateAssets = await db("categories").where("id", req.params.id).update(req.body).returning("*");
+               const updateAssets = await db("categories")
+               .where("id", req.params.id)
+               .update(req.body)
+               .returning("*")
                res.sendJSON(updateAssets, success("assets", "Category"));
            }else{
                res.sendError(null, error("noAssetsUpload").message)    
@@ -68,6 +72,6 @@ exports.uploadAssets = async (req, res, next) => {
            res.sendError(null, error("noAssetsUpload").message)
        }
     }catch(err){
-
+        res.sendError(err, error("serverError").message)
     }
 }
