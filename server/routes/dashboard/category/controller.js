@@ -45,7 +45,7 @@ exports.updateCategory = async (req, res, next) => {
 exports.deleteCategory = async (req, res, next) => {
     try{
         const category = await db("categories").where({id: req.params.id, deleted_at: null}).update({deleted_at: db.fn.now()}).returning("*")
-        res.sendJSON(category[0], success("update", "Category"))
+        res.sendJSON(category[0], success("edit", "Category"))
     }catch(err){
         res.sendError(err, error("serverError").message)
     }

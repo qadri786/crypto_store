@@ -34,11 +34,15 @@ exports.up = function(knex) {
   }).createTable("product_attributes", function(table){
     table.integer("product_id").references("products.id")
     table.jsonb("key_value")
+  }).createTable("product_users", function(table) {
+    table.integer("user_id").references("users.id")
+    table.integer("product_id").references("products.id")
   })
 };
 
 exports.down = function(knex) {
   return knex.schema
+  .dropTable("product_users")
   .dropTable("product_attributes")
   .dropTable("product_categories")
   .dropTable("products")
