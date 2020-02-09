@@ -6,9 +6,9 @@ module.exports = {
     client: 'postgresql',
     connection: {
       host: "postgres-dev",
-      database: 'crypto_store_dev',
-      user: "mbq_dev_user",
-      password: "mFl4g5Bx~40|C1w",
+      database: 'crypto_store',
+      user: "postgres",
+      password: "admin123",
       charset: 'utf8'
     },
     pool: {
@@ -24,9 +24,9 @@ module.exports = {
     client: 'postgresql',
     connection: {
       host: "postgres-dev",
-      database: 'mbqqa',
-      user:     'mbq_dev_user',
-      password: 'mFl4g5Bx~40|C1w',
+      database: 'crypto_store_test',
+      user:     'postgres',
+      password: 'admin123',
       charset: 'utf8'
     },
     pool: {
@@ -42,9 +42,9 @@ module.exports = {
     client: 'postgresql',
     connection: {
       host: "postgres-dev",
-      database: 'mbqprod',
-      user:     'mbq_dev_user',
-      password: 'mFl4g5Bx~40|C1w',
+      database: 'crypto_store',
+      user:     'postgres',
+      password: 'admin123',
       charset: 'utf8'
     },
     pool: {

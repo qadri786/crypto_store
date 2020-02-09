@@ -50,5 +50,5 @@ exports.upload = (options) => {
 }
 
 exports.remove = (key) => {
-    return s3.deleteObject({Bucket: "mbq-bucket", Key: key}).promise()
+    return s3.deleteObject({Bucket: "", Key: key}).promise()
 }

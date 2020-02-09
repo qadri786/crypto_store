@@ -1,13 +1,13 @@
 version: '3'
 services:
   postgres-dev:
-    image: postgres:10
+    image: postgres:11
     volumes:
       - /opt/postgresql/data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=mbq_dev_user
-      - POSTGRES_PASSWORD=mFl4g5Bx~40|C1w
-      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_DB=crypto_store
     ports:
       - 5432:5432
 

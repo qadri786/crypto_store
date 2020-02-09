@@ -1,7 +1,7 @@
 module.exports = {
     apps: [{
       name: 'tss-api',
-      script: 'npm run dev',
+      script: 'npm start',
       // error_file: '/var/log/pm2/err.log',
       // out_file: '/var/log/pm2/out.log',
       // log_file: '/var/log/pm2/combined.log',
@@ -13,7 +13,7 @@ module.exports = {
       env: {
         NODE_ENV: 'development'
       },
-      env: {
+      env_staging: {
         NODE_ENV: 'test'
       },
       env_production: {
