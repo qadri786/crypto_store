@@ -6,7 +6,7 @@ exports.up = function(knex) {
     table.string("order_number")
     table.string("invoice_number")
     table.integer("status")
-    table.text("address")
+    table.jsonb("address")
     table.timestamps(true, true);
     table.timestamp("deleted_at")
   }).createTable("order_products", function(table){

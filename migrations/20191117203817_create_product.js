@@ -6,7 +6,7 @@ exports.up = function(knex) {
     table.string("name")
     table.string("slug")
     table.string("color")
-    table.text("image")
+    table.jsonb("image")
     table.integer("parent_id").references("categories.id")
     table.boolean("is_active").defaultTo(true)
     table.timestamps(true,true)

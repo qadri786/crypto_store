@@ -8,6 +8,7 @@ exports.up = function(knex) {
     table.string("password")
     table.text("address")
     table.string("uid")
+    table.text("image").defaultTo("")
     table.boolean("is_active").defaultTo(true)
     table.timestamps(true,true)
     table.timestamp("deleted_at")

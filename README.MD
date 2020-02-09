@@ -19,7 +19,7 @@ Developer must to know about following libraries
 - Goto directory
 - Run docker pull postgres
 - Run docker-compose up -d --build
-- Run docker-compose start this will run on port 8954
+- Run docker-compose start this will run on port 80
 
 ## File structure
 - config (All config files contain there)
