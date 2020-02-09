@@ -1,4 +1,5 @@
 const express = require("express")
+const { upload } = require("../../../../library/storage")
 const controller = require("./controller")
 const router = express()
 router.get("/", controller.getProduct)
