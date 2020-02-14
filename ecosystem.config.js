@@ -1,7 +1,7 @@
 module.exports = {
     apps: [{
       name: 'tss-api',
-      script: 'npm start',
+      script: 'npm run dev',
       // error_file: '/var/log/pm2/err.log',
       // out_file: '/var/log/pm2/out.log',
       // log_file: '/var/log/pm2/combined.log',

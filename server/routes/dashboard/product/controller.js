@@ -62,12 +62,12 @@ exports.updateProduct = async (req, res, next) => {
         const {id} = req.params;
         const product = await db("products").where({id}).update(removeFromObject(req.body, ["category_id", "outlet_id"])[0]).returning("*")
         if(req.body.hasOwnProperty("category_id")){
-            const categories = category_id.map((item) => { return {category_id: item, product_id: product[0].id} })
+            const categories = req.body.category_id.map((item) => { return {category_id: item, product_id: product[0].id} })
             await db("product_categories").where({product_id: product[0].id}).del()
             await db("product_categories").insert(categories).returning("*")
         }
         if(req.body.hasOwnProperty("outlet_id")){
-            const outlets = outlet_id.map((item) => { return {outlet_id: item, product_id: product[0].id} })
+            const outlets = req.body.outlet_id.map((item) => { return {outlet_id: item, product_id: product[0].id} })
             await db("outlet_products").where({product_id: product[0].id}).del()
             await db("outlet_products").insert(outlets).returning("*")
         }

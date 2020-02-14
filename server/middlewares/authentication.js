@@ -5,18 +5,18 @@ module.exports = (req, res, next) => {
     const authorization = (req.get('Authorization') || req.headers['Authorization'] || 'undefined').toString();
     if (authorization !== 'undefined') {
         let auth = authorization.toString().split(" ")[1];
-
         if (auth){
             auth = verify(auth);
             if(auth.aud === appConfig.auth.audience){
-                req["user"] = { "id": auth.id, "role": auth.role };
+                req.user = { "id": auth.id, "role": auth.role };
+
                 next()
             }else{
                 res.sendError(null, "Your authentication token has been expired !", 401);
                 // res.status("401").json({ message: "project dosen't meets" })
             }
         }else{
-            next()    
+            res.sendError(null, "Your authentication token has been expired !", 401);
         }
     }else{
         const pattDashboard = new RegExp("dashboard");

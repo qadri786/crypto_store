@@ -6,7 +6,7 @@ exports.getOutlets = async (req, res, next) => {
     const outlets = await db("outlets")
     .innerJoin("user_outlets", "outlets.id", "user_outlets.outlet_id")
     .innerJoin("users", "user_outlets.user_id", "users.id")
-    .where({"deleted_at": null, "users.id": req.user.id})
+    .where({"outlets.deleted_at": null, "users.id": req.user.id})
     .select(["outlets.*"])
     .limit(limit).offset(req.offset)
     if(outlets){
@@ -21,9 +21,8 @@ exports.getOutletsById = async (req, res, next) => {
     const outlet = await db("outlets")
     .innerJoin("user_outlets", "outlets.id", "user_outlets.outlet_id")
     .innerJoin("users", "user_outlets.user_id", "users.id")
-    .where({"deleted_at": null, "users.id": req.user.id, "outlets.id": id})
-    .select(["outlets.*"])
-    .first()
+    .where({"outlets.deleted_at": null, "users.id": req.user.id, "outlets.id": id})
+    .select(["outlets.*"]).first()
     if(outlet){
         res.sendJSON(outlet)
     }else{

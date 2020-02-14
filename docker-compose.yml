@@ -10,7 +10,13 @@ services:
       - POSTGRES_DB=crypto_store
     ports:
       - 5432:5432
-
+  pgadmin-dev:
+    image: dpage/pgadmin4
+    environment: 
+      - PGADMIN_DEFAULT_EMAIL=admin@owldev.local
+      - PGADMIN_DEFAULT_PASSWORD=admin123
+    ports:
+      - 8954:80
   api:
     build: .
     container_name: crypto_api
