@@ -19,9 +19,11 @@ module.exports = (req, res, next) => {
             res.sendError(null, "Your authentication token has been expired !", 401);
         }
     }else{
-        const pattDashboard = new RegExp("dashboard");
-        const pattMedia = new RegExp("media");
-        if(pattDashboard.exec(req.path) || pattMedia.exec(req.path)){
+        const is_secure = appConfig.auth.securePath.some(path => {
+           const patt = new RegExp(path);
+           return  patt.exec(req.path);
+        })
+        if(is_secure){
             if(req.path.indexOf("login") > -1 || req.path.indexOf("api-docs") > -1){
                 next()    
             }else{

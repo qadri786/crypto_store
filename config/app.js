@@ -3,8 +3,9 @@ const config = {
     "development": {
         auth: {
             key: "e31fda67-b94c-4e92-a9c3-20c204d6289d",
-            audience: 'project-tss', expiresIn: '1 year',
-            encryptKey: [1,0,7,0,9,0,7,8,6,0,0,0,1,5,2,9]
+            audience: 'project-cs', expiresIn: '1 year',
+            encryptKey: [1,0,7,0,9,0,7,8,6,0,0,0,1,5,2,9],
+            securePath: ["dashboard", "api/order", "media"]
         },
         middlewares: [
             {"url": "./middlewares/response", "pos": "before"},
@@ -19,7 +20,7 @@ const config = {
     "test": {
         auth: {
             key: "e31fda67-b94c-4e92-a9c3-20c204d6289d",
-            audience: 'project-tss', expiresIn: '1 year',
+            audience: 'project-cs', expiresIn: '1 year',
             encryptKey: [1,0,7,0,9,0,7,8,6,0,0,0,1,5,2,9]
         },
         middlewares: [
@@ -34,7 +35,7 @@ const config = {
     "production": {
         auth: {
             key: "e31fda67-b94c-4e92-a9c3-20c204d6289d",
-            audience: 'project-tss', expiresIn: '1 year',
+            audience: 'project-cs', expiresIn: '1 year',
             encryptKey: [1,0,7,0,9,0,7,8,6,0,0,0,1,5,2,9]
         },
         middlewares: [

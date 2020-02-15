@@ -12,6 +12,7 @@ exports.up = function(knex) {
   }).createTable("order_products", function(table){
     table.integer("order_id").references("orders.id")
     table.integer("product_id").references("products.id")
+    table.integer("outlet_id").references("outlets.id")
   })
 };
 
